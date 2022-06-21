@@ -101,18 +101,25 @@ def data_points():
 		l = []
 		for i in range(len(data)):
 			x= float(data[i].rstrip("\n"))
-			x = "{:.6f}".format(float(x))
+			x = "{:.8f}".format(float(x))
 			l.append(x)
 		return l
 
 def plotter():
 	while 1:
+		i=0
+		if i >= 10:
+			with open("data.txt","w") as file:
+			    file.write('')
+			i=0
+		else:
+			i+=1
 		ax.cla()
 		ax.grid()
 		dpts = data_points()
 		ax.plot(dpts, marker='', color='green')
 		graph.draw()
-		time.sleep(1.0)
+		time.sleep(0.1)
 
 def emission_fun():
 	i,co2=0,0
@@ -127,7 +134,7 @@ def emission_fun():
 
 		power = open("total_power_draw.txt","r")
 		consumption = power.read()
-		consumption = float(consumption)+total_bytes * 1.52E-10
+		consumption = float(consumption)+total_bytes * 7.2E-11
 		power.close()
 
 		w_emissions_display = Canvas(gui, width=378, height=60, highlightbackground="#3B3B3B", bg='#212121')
