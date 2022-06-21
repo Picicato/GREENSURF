@@ -107,13 +107,6 @@ def data_points():
 
 def plotter():
 	while 1:
-		i=0
-		if i >= 10:
-			with open("data.txt","w") as file:
-			    file.write('')
-			i=0
-		else:
-			i+=1
 		ax.cla()
 		ax.grid()
 		dpts = data_points()
